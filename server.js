@@ -33,6 +33,16 @@ app.put('/buzzword', (req, res, next) => {
   res.json({"success": true, newScore: newWord.points});
 });
 
+app.delete('/buzzword', (req, res, next) => {
+  let deletedWordName = req.body.buzzWord;
+  for(let i = 0; i < buzzWords.length; i++){
+    if(buzzWords[i].buzzWord === deletedWordName){
+      buzzWords.splice(buzzWords.indexOf(buzzWords[i]), 1);
+    }
+  }
+  res.json({success: true});
+});
+
 app.get('/', (req, res, next) => {
   // fs.readFile('./public/index.html', (err, content) => {
   //   if(err){
