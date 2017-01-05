@@ -29,12 +29,11 @@ app.put('buzzword', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-  fs.readFile('./public/index.html', (err, content) => {
-    if(err){
-      throw "Error";
-    }
-    res.send(content);
-  });
+  // fs.readFile('./public/index.html', (err, content) => {
+  //   if(err){
+  //     throw "Error";
+  //   }
+    res.sendFile(__dirname + '/public/index.html');  // });
 });
 
 app.get('/buzzwords', (req, res, next) => {
