@@ -21,6 +21,15 @@ app.post('/buzzword', (req, res, next) => {
   next();
 });
 
+app.post('/reset', (req, res, next) => {
+  console.log(req.body.reset);
+  if(req.body.reset === true){
+    buzzWords = [];
+  }
+  res.json({success: true});
+  next();
+});
+
 app.put('/buzzword', (req, res, next) => {
   let newWord = req.body;
   for(let i = 0; i < buzzWords.length; i++){
