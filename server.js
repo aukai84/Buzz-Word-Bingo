@@ -28,7 +28,6 @@ app.put('/buzzword', (req, res, next) => {
   let newWord = req.body;
   for(let i = 0; i < buzzWords.length; i++){
     if(buzzWords[i].buzzWord === newWord.buzzWord){
-      buzzWords[i].buzzWord = newWord.buzzWord;
       buzzWords[i].points = newWord.points;
       buzzWords[i].heard = true;
     }
