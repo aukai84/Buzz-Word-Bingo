@@ -23,11 +23,6 @@ app.post('/buzzword', (req, res, next) => {
   }
 });
 
-app.post('/reset', (req, res, next) => {
-   buzzWords = [];
-  res.json({success: true});
-});
-
 app.put('/buzzword', (req, res, next) => {
   let newWord = req.body;
   for(let i = 0; i < buzzWords.length; i++){
