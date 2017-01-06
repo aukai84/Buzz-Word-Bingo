@@ -4,8 +4,9 @@ const bodyParser = require('body-parser');
 const buzzwords = require('./routes/buzzwords');
 const buzzword = require('./routes/buzzword');
 const reset = require('./routes/reset');
-
-let app = express();
+const  app = express();
+//PORT=4000 node server.js
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded());
 app.use('/buzzwords', buzzwords);
@@ -22,7 +23,7 @@ app.get('/', (req, res, next) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-let server = app.listen(3000, () => {
+let server = app.listen(PORT, () => {
   let host = server.address().address;
   let port = server.address().port;
 
