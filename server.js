@@ -22,12 +22,8 @@ app.post('/buzzword', (req, res, next) => {
 });
 
 app.post('/reset', (req, res, next) => {
-  console.log(req.body.reset);
-  if(req.body.reset === true){
-    buzzWords = [];
-  }
+   buzzWords = [];
   res.json({success: true});
-  next();
 });
 
 app.put('/buzzword', (req, res, next) => {
@@ -53,12 +49,8 @@ app.delete('/buzzword', (req, res, next) => {
 });
 
 app.get('/', (req, res, next) => {
-  // fs.readFile('./public/index.html', (err, content) => {
-  //   if(err){
-  //     throw "Error";
-  //   }
     console.log('getting index.html...');
-    res.sendFile(__dirname + '/public/index.html');  // });
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.get('/buzzwords', (req, res, next) => {
