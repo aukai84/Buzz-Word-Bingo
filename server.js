@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
-const qs = require('querystring');
 
 let app = express();
 let buzzWords = [];
@@ -18,7 +17,6 @@ app.post('/buzzword', (req, res, next) => {
   buzzWords.push(req.body);
   console.log(`added ${req.body} to buzzWords array`);
   res.json({"success": true});
-  next();
 });
 
 app.post('/reset', (req, res, next) => {
