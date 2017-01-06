@@ -1,17 +1,17 @@
 //jshint esversion: 6
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
+const buzzwords = require('./routes/buzzwords');
 
 let app = express();
-let buzzWords = [];
+
+app.use(bodyParser.urlencoded());
+app.use('/buzzwords', buzzwords);
 
 app.use((req, res, next) => {
   console.log("first request");
   next();
 });
-
-app.use(bodyParser.urlencoded());
 
 app.post('/buzzword', (req, res, next) => {
   if(req.body.hasOwnProperty('buzzWord')){
@@ -52,11 +52,6 @@ app.delete('/buzzword', (req, res, next) => {
 app.get('/', (req, res, next) => {
     console.log('getting index.html...');
     res.sendFile(__dirname + '/public/index.html');
-});
-
-app.get('/buzzwords', (req, res, next) => {
-  console.log('sending buzzWords content to client');
-  res.json({"buzzWords": buzzWords});
 });
 
 let server = app.listen(3000, () => {
