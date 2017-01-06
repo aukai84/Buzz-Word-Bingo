@@ -14,9 +14,13 @@ app.use((req, res, next) => {
 app.use(bodyParser.urlencoded());
 
 app.post('/buzzword', (req, res, next) => {
-  buzzWords.push(req.body);
-  console.log(`added ${req.body} to buzzWords array`);
-  res.json({"success": true});
+  if(req.body.hasOwnProperty('buzzWord')){
+    buzzWords.push(req.body);
+    console.log(`added ${req.body} to buzzWords array`);
+    res.json({"success": true});
+  } else {
+
+  }
 });
 
 app.post('/reset', (req, res, next) => {
