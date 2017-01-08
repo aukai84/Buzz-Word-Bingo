@@ -6,7 +6,8 @@ let router = express('router');
 
 router.post('/', (req, res) => {
   console.log('clearing game');
-  game.reset();
+  game.buzzWords = [];
+  game.userScore = 0;
   res.json({success: true});
 });
 
